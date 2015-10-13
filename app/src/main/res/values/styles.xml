@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- 蓝色按钮，带圆角 -->
+    <style name="BlueWithCorner" >
+        <item name="android:background">@drawable/button_bluecorner_selector</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>
