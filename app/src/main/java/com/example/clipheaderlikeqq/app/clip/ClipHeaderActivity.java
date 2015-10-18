@@ -88,13 +88,14 @@ public class ClipHeaderActivity extends Activity implements OnTouchListener{
     private void init() {
         side_length = getIntent().getIntExtra("side_length",200);
 
-        iv_back = (ImageView) this.findViewById(R.id.iv_back);
-        srcPic = (ImageView) this.findViewById(R.id.src_pic);
-        clipview =  (ClipView)this.findViewById(R.id.clipView);
-        bt_ok = this.findViewById(R.id.bt_ok);
+        iv_back = (ImageView) findViewById(R.id.iv_back);
+        srcPic = (ImageView) findViewById(R.id.src_pic);
+        clipview =  (ClipView)findViewById(R.id.clipView);
+        bt_ok = findViewById(R.id.bt_ok);
 
         srcPic.setOnTouchListener(this);
 
+        //clipview中有初始化原图所需的参数，所以需要等到clipview绘制完毕再初始化原图
         ViewTreeObserver observer = clipview.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
 
@@ -132,11 +133,14 @@ public class ClipHeaderActivity extends Activity implements OnTouchListener{
         if (TextUtils.isEmpty(path)) {
             return;
         }
+        //原图可能很大，现在手机照出来都3000*2000左右了，直接加载可能会OOM
+        //这里 decode 出 720*1280 左右的照片
         bitmap = BitmapUtil.decodeSampledBitmap(path,720,1280);
 
         if (bitmap == null) {
             return;
         }
+
 
         //图片的缩放比
         float scale ;
@@ -156,7 +160,7 @@ public class ClipHeaderActivity extends Activity implements OnTouchListener{
         // 缩放
         matrix.postScale(scale, scale);
 
-        // 平移
+        // 平移   将缩放后的图片平移到imageview的中心
         int midX = srcPic.getWidth()/2;//imageView的中心x
         int midY = srcPic.getHeight()/2;//imageView的中心y
         int imageMidX = (int)(bitmap.getWidth()*scale/2);//bitmap的中心x

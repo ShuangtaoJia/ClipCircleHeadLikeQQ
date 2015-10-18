@@ -40,7 +40,6 @@ public class UserInfoActivity extends Activity {
     }
 
 
-
     private void initView() {
         RelativeLayout rl_icon = (RelativeLayout) findViewById(R.id.rl_icon);
         iv_head_icon = (ImageView) findViewById(R.id.iv_head_icon);
@@ -121,6 +120,10 @@ public class UserInfoActivity extends Activity {
                 }).show();
     }
 
+    /**
+     * 打开截图界面
+     * @param uri 原图的Uri
+     */
     public void starCropPhoto(Uri uri) {
 
         if (uri == null) {
