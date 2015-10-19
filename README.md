@@ -1,7 +1,13 @@
 # ClipCircleHeadLikeQQ
 仿QQ圆头像截取功能
 
+
+
 效果图：
+
+
+ ![image](https://github.com/ShuangtaoJia/ClipCircleHeadLikeQQ/blob/master/screenshots/GIF_20151019_095222.gif)
+
 
 使用方法：
 
